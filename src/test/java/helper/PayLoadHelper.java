@@ -15,10 +15,10 @@ public class PayLoadHelper {
         Map<String, Object> replacements = new HashMap<>();
         replacements.put("title", "foo " + uniqueId);
         replacements.put("body", bodyContent);
-        replacements.put("userId", 1); // numeric value directly
+        replacements.put("userId", 2); // numeric value directly
 
         return replacements;
-    }
+           }
     }
 
 
