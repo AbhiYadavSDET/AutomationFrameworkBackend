@@ -20,7 +20,11 @@ public class ConfigLoader {
         }
     }
 
-    public static String getBaseURI() {
-        return properties.getProperty("baseURI");
+    public static String getBaseURI(String key) {
+        String uri = properties.getProperty(key);
+        if (uri == null) {
+            throw new RuntimeException("Key " + key + " not found in config.properties");
+        }
+        return uri;
     }
 }
