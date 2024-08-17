@@ -12,6 +12,8 @@ import io.restassured.http.ContentType;
                     .when()
                     .get(endpoint)
                     .then()
+                    .log()
+                    .all()
                     .extract().response();
         }
 
@@ -23,6 +25,7 @@ import io.restassured.http.ContentType;
                     .when()
                     .post(endpoint)
                     .then()
+                    .log().all()
                     .extract().response();
         }
 
@@ -34,6 +37,8 @@ import io.restassured.http.ContentType;
                     .when()
                     .put(endpoint)
                     .then()
+                    .log()
+                    .all()
                     .extract().response();
 
     }

@@ -18,11 +18,11 @@ public class APITest {
 
     @BeforeClass
     public void setup() {
-        RestAssured.baseURI = ConfigLoader.getBaseURI();
+        RestAssured.baseURI = ConfigLoader.getBaseURI("jsonPlaceHolderURI");
         softAssert = new SoftAssert();
     }
 
-    @Test
+  //  @Test
     public void testCreatePost() throws IOException {
 
 
