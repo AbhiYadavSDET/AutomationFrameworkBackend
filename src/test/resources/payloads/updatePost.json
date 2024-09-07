@@ -1,6 +1,5 @@
 {
-  "id": 1,
-  "title": "foo updated",
-  "body": "bar updated",
-  "userId": 1
+  "title": "{{title}}",
+  "body": "{{body}}",
+  "userId": "{{userId}}"
 }
