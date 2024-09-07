@@ -43,4 +43,10 @@ import io.restassured.http.ContentType;
 
     }
 
+    public static Response sendDeleteRequest(String endpoint){
+            return  RestAssured.given().log().all()
+                    .when()
+                    .delete(endpoint);
+    }
+
 }
