@@ -48,7 +48,7 @@ public class APITest {
     @Test(enabled = true)
     public void testGetPost() {
         // Define the ID of the resource to retrieve
-        String postId = "101";
+        String postId = "1";
 
         // Perform the GET request
         Response response = ApiUtils.sendGetRequest("/posts/" + postId);
