@@ -24,6 +24,7 @@ public class APITest {
 
    @Test(enabled = true)
     public void testCreatePost() throws IOException {
+        System.out.println(" =============== Starting Create Post API to Test ================");
 
         // Load and replace placeholders in the JSON template
         String requestBody = PayloadLoader.loadPayload("createPost.json", PayLoadHelper.getCreateUserBody());
@@ -34,6 +35,7 @@ public class APITest {
         // Perform assertions
 
         softAssert.assertEquals(response.statusCode(), 201, "Status code should be 201");
+        response.getTime();
         softAssert.assertEquals(response.jsonPath().getInt("userId"), 2, "UserId should be 1");
 
         // Validate dynamic ID if returned
@@ -42,11 +44,13 @@ public class APITest {
         softAssert.assertFalse(id.isEmpty(), "ID should not be empty");
 
         softAssert.assertAll();
+       System.out.println(" =============== End Create Post API to Test ================");
     }
 
 
     @Test(enabled = true)
     public void testGetPost() {
+        System.out.println(" =============== Starting Get Post API to Test ================");
         // Define the ID of the resource to retrieve
         String postId = "1";
 
@@ -57,14 +61,19 @@ public class APITest {
         softAssert.assertEquals(response.statusCode(), 200, "Status code should be 200");
 
         // Validate the response
-        softAssert.assertEquals(response.jsonPath().getString("id"), "ID should not be null");
-        softAssert.assertEquals(response.jsonPath().getInt("userId") > 0, "UserId should be greater than 0");
-        softAssert.assertEquals(response.jsonPath().getString("title"), "Title should not be null");
-        softAssert.assertEquals(response.jsonPath().getString("body"), "Body should not be null");
+        softAssert.assertNotNull(response.jsonPath().getString("id"), "ID should not be null");
+        softAssert.assertTrue(response.jsonPath().getInt("userId") > 0, "UserId should be greater than 0");
+        softAssert.assertNotNull(response.jsonPath().getString("title"), "Title should not be null");
+        softAssert.assertNotNull(response.jsonPath().getString("body"), "Body should not be null");
 
-}
+        // Assert all
+        softAssert.assertAll();
+        System.out.println(" =============== End Get Post API to Test ================");
+    }
+
     @Test(enabled = true)
     public void testUpdatePost() throws IOException {
+        System.out.println(" =============== Starting Update Post API to Test ================");
 
         // Load and replace placeholders in the JSON template
         String requestBody = PayloadLoader.loadPayload("updatePost.json", PayLoadHelper.getUpdateUserBody());
@@ -79,18 +88,23 @@ public class APITest {
         String id = response.jsonPath().getString("id");
         softAssert.assertNotNull(id, "ID should not be null");
         softAssert.assertFalse(id.isEmpty(), "ID should not be empty");
+        softAssert.assertAll();
+        System.out.println(" =============== End Create Post API to Test ================");
     }
 
     @Test(enabled = true)
     public void testDeletePost(){
-
+        System.out.println(" =============== Starting Delete Post API to Test ================");
         // Define the ID of the resource to delete
         String postId = "1";
 
         // Perform the DELETE request
-        Response response = ApiUtils.sendDeleteRequest("/posts/" + postId);
+        Response response = ApiUtils.sendDeleteRequest("/postss/" + postId);
 
         softAssert.assertEquals(response.statusCode(),200,"Response code should be 200");
+
+        softAssert.assertAll();
+        System.out.println(" =============== End Delete Post API to Test ================");
     }
 
 }
