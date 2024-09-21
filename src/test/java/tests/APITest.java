@@ -55,7 +55,7 @@ public class APITest {
         String postId = "1";
 
         // Perform the GET request
-        Response response = ApiUtils.sendGetRequest("/posts/" + postId);
+        Response response = ApiUtils.sendGetRequest("/postss/" + postId);
 
         // Perform assertions
         softAssert.assertEquals(response.statusCode(), 200, "Status code should be 200");
