@@ -14,9 +14,6 @@ public class PayLoadHelper {
         // Create a map of dynamic values
         Map<String, Object> replacements = new HashMap<>();
 
-        //title directly picking up from json file
-       //replacements.put("title", "foo " + uniqueId);
-
         replacements.put("body", bodyContent);
         replacements.put("userId", 2); // numeric value directly
 
