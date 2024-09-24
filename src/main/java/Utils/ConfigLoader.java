@@ -7,6 +7,7 @@ import java.util.Properties;
 public class ConfigLoader {
 
     private static Properties properties = new Properties();
+    private static String key;
 
     static {
         try (InputStream input = ConfigLoader.class.getClassLoader().getResourceAsStream("config.properties")) {
@@ -21,6 +22,7 @@ public class ConfigLoader {
     }
 
     public static String getBaseURI(String key) {
+        ConfigLoader.key = key;
         String uri = properties.getProperty(key);
         if (uri == null) {
             throw new RuntimeException("Key " + key + " not found in config.properties");
