@@ -22,7 +22,7 @@ public class APITest {
         softAssert = new SoftAssert();
     }
 
-   @Test(enabled = true)
+   @Test(enabled = true, priority = 1)
     public void testCreatePost() throws IOException {
         System.out.println(" =============== Starting Create Post API to Test ================");
 
@@ -48,7 +48,7 @@ public class APITest {
     }
 
 
-    @Test(enabled = true)
+    @Test(enabled = true,priority = 2)
     public void testGetPost() {
         System.out.println(" =============== Starting Get Post API to Test ================");
         // Define the ID of the resource to retrieve
@@ -71,7 +71,7 @@ public class APITest {
         System.out.println(" =============== End Get Post API to Test ================");
     }
 
-    @Test(enabled = true)
+    @Test(enabled = true,priority = 3)
     public void testUpdatePost() throws IOException {
         System.out.println(" =============== Starting Update Post API to Test ================");
 
@@ -92,14 +92,14 @@ public class APITest {
         System.out.println(" =============== End Create Post API to Test ================");
     }
 
-    @Test(enabled = true)
+    @Test(enabled = true,priority = 4)
     public void testDeletePost(){
         System.out.println(" =============== Starting Delete Post API to Test ================");
         // Define the ID of the resource to delete
         String postId = "1";
 
         // Perform the DELETE request
-        Response response = ApiUtils.sendDeleteRequest("/postss/" + postId);
+        Response response = ApiUtils.sendDeleteRequest("/posts/" + postId);
 
         softAssert.assertEquals(response.statusCode(),200,"Response code should be 200");
 
