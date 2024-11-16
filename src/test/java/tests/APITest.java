@@ -11,6 +11,7 @@ import Utils.PayloadLoader;
 import Utils.ConfigLoader;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class APITest {
 
@@ -35,7 +36,8 @@ public class APITest {
         // Perform assertions
 
         softAssert.assertEquals(response.statusCode(), 201, "Status code should be 201");
-        response.getTime();
+        response.timeIn(TimeUnit.SECONDS);
+
         softAssert.assertEquals(response.jsonPath().getInt("userId"), 2, "UserId should be 1");
 
         // Validate dynamic ID if returned
