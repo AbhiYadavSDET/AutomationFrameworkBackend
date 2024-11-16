@@ -2,6 +2,7 @@
 <suite name="APITestSuite">
     <listeners>
         <listener class-name="org.testng.reporters.FailedReporter"/>
+        <listener class-name="Listeners.ExtentReportListener"></listener>
     </listeners>
     <test name="APITests">
         <classes>
