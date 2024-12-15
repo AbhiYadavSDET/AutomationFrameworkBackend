@@ -12,10 +12,13 @@ public class ConfigLoader {
     static {
         try (InputStream input = ConfigLoader.class.getClassLoader().getResourceAsStream("config.properties")) {
             if (input == null) {
+                System.out.println("config.properties file not found");
                 throw new RuntimeException("Sorry, unable to find config.properties");
             }
-            // Load properties file
+            System.out.println("Loading config.properties...");
             properties.load(input);
+            System.out.println("config.properties loaded successfully");
+            properties.forEach((key, value) -> System.out.println("Key: " + key + ", Value: " + value));
         } catch (IOException ex) {
             throw new RuntimeException("Error loading config.properties", ex);
         }
@@ -24,9 +27,13 @@ public class ConfigLoader {
     public static String getBaseURI(String key) {
         ConfigLoader.key = key;
         String uri = properties.getProperty(key);
+        System.out.println("Fetching key: " + key);
         if (uri == null) {
+            System.out.println("Key not found in config.properties: " + key);
             throw new RuntimeException("Key " + key + " not found in config.properties");
         }
+        System.out.println("Value found: " + uri);
         return uri;
     }
+
 }
